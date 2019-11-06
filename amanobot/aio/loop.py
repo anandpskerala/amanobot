@@ -61,8 +61,8 @@ def _infer_handler_function(bot, h):
     else:
         handler = h
 
-    def create_task_for(msg):
-        bot.loop.create_task(handler(msg))
+    def create_task_for(msg, update):
+        bot.loop.create_task(handler(msg, update))
 
     if asyncio.iscoroutinefunction(handler):
         return create_task_for
